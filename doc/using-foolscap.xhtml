@@ -143,7 +143,7 @@ your Tub available. There are three parts: give it an identity, have it
 listen on a port, and tell it the protocol/hostname/portnumber at which that
 port is accessible to the outside world.</p>
 
-<p>In general, the Tub will generate its own identity, the <em>TubID</em>, by
+<p>Typically, the Tub will generate its own identity, the <em>TubID</em>, by
 creating a self-signed SSL public key certificate, and then hashing it into a
 suitably-long random-looking string. This is the primary identifier of the
 Tub, other identifiers are just <em>location hints</em> that suggest how the
@@ -161,8 +161,8 @@ unauthenticated Tubs have a distinct form (starting with <code>pbu:</code>
 instead of <code>pb:</code>) to make sure they are not mistaken for
 authenticated Tubs. Foolscap uses authenticated Tubs by default.</p>
 
-<p>Having the Tub listen on a TCP port is as simple as calling <code
-class="API" base="foolscap.pb.Tub">listenOn</code> with a <code class="API"
+<p>Having the Tub listen on a TCP port is as simple as calling its <code
+class="API" base="foolscap.pb.Tub">listenOn</code> method with a <code class="API"
 base="twisted.application">strports</code>-formatted port specification
 string. The simplest such string would be <q>tcp:12345</q>, to listen on port
 12345 on all interfaces. Using <q>tcp:12345:interface=127.0.0.1</q> would
@@ -188,8 +188,8 @@ tub.setLocation("myhost.example.com:12345")
 
 <h3>Registering the Referenceable</h3>
 
-<p>Once the Tub has a Listener and a location, you can publish your
-<code>Referenceable</code> to the entire world by picking a name and
+<p>Once a Listener is referenced by the Tub, and the Tub has a location, you
+can publish your <code>Referenceable</code> to the entire world by picking a name and
 registering it:</p>
 
 <pre class="python">
@@ -228,7 +228,7 @@ furl = tub.registerReference(myserver, "math-service")
 nature of this form makes it slightly easier to throw together
 quick-and-dirty Foolscap applications, since you only need to hard-code the
 target host and port into the client side program. However any serious
-application should just used the default authenticated form and use a full
+application should use the default authenticated form and use a full
 FURL as their starting point. Note that the FURL can come from anywhere:
 typed in by the user, retrieved from a web page, or hardcoded into the
 application.</p>
