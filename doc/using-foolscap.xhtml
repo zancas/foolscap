@@ -146,12 +146,12 @@ port is accessible to the outside world.</p>
 <p>In general, the Tub will generate its own identity, the <em>TubID</em>, by
 creating a self-signed SSL public key certificate, and then hashing it into a
 suitably-long random-looking string. This is the primary identifier of the
-Tub in the FURL, other identifiers are just <em>location hints</em> that
-suggest how the Tub might be reached. The fact that the TubID is tied to the
-public key allows FURLs to be <q>secure</q> references (meaning that no third
-party can cause you to connect to the wrong reference). You can also create a
-Tub with a pre-existing certificate, which is how Tubs can retain a
-persistent identity over multiple executions.</p>
+Tub, other identifiers are just <em>location hints</em> that suggest how the
+Tub might be reached. The fact that the TubID is tied to the public key
+allows FURLs to be <q>secure</q> references (meaning that no third party can
+cause you to connect to the wrong reference). You can also create a Tub with
+a pre-existing certificate, which is how Tubs can retain a persistent
+identity over multiple executions.</p>
 
 <p>You can also create an <code>UnauthenticatedTub</code>, which has an empty
 TubID. Hosting and connecting to unauthenticated Tubs do not require the
