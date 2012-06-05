@@ -6,7 +6,7 @@ from foolscap.logging import log
 class FilterOptions(usage.Options):
     stdout = sys.stdout
     stderr = sys.stderr
-    synopsis = "Usage: flogtool filter [options] OLDFILE.pickle NEWFILE.pickle"
+    synopsis = "Usage: flogtool filter [options] OLDFILE.flog[.bz2] NEWFILE.flog[.bz2]"
 
     optParameters = [
         ["after", None, None, "include events after timestamp (seconds since epoch)"],
