@@ -9,7 +9,7 @@ class DumpOptions(usage.Options):
     synopsis = "Usage: flogtool dump DUMPFILE.pickle"
     optParameters = [
         ("timestamps", "t", "short-local",
-         "Format for timestamps: short-local, utc, long-local"),
+         "Format for timestamps: short-local, utc, long-local, seconds-since-epoch"),
         ]
     optFlags = [
         ("verbose", "v", "Show all event arguments"),
@@ -18,7 +18,7 @@ class DumpOptions(usage.Options):
         ]
 
     def opt_timestamps(self, arg):
-        if arg not in ("short-local", "utc", "long-local"):
+        if arg not in ("short-local", "utc", "long-local", "seconds-since-epoch"):
             raise usage.UsageError("--timestamps= must be one of 'short-local', 'utc', or 'long-local'")
         self["timestamps"] = arg
 
@@ -93,6 +93,9 @@ class LogDumper:
             time_s = time.strftime("%Y-%m-%d_%H:%M:%S", time.gmtime(when))
             time_s = time_s + ".%06d" % int(1000000*(when - int(when)))
             time_s += "Z"
+        elif mode == "seconds-since-epoch":
+            time_s = when
+
         return time_s
 
     def print_event(self, e):
